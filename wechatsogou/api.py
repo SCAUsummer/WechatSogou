@@ -225,10 +225,12 @@ class WechatSogouAPI(object):
             requests error
         """
         url = WechatSogouRequest.gen_search_gzh_url(keyword, page)
+        # 返回公众号的连接
         resp = self.__get_by_unlock(url,
                                     unlock_platform=self.__unlock_sogou,
                                     unlock_callback=unlock_callback,
                                     identify_image_callback=identify_image_callback)
+        # 根据搜索公众号的文本去获取想要的结构体
         return WechatSogouStructuring.get_gzh_by_search(resp.text)
 
     def search_article(self, keyword, page=1, timesn=WechatSogouConst.search_article_time.anytime,

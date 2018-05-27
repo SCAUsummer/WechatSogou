@@ -102,7 +102,9 @@ class WechatSogouRequest(object):
             search_gzh_url
         """
         assert isinstance(page, int) and page > 0
-
+        # 断言page是整数，而且怕个应该是大于0
+        # 那为什么呢？
+        # 要保证下面的format格式正确
         qs_dict = OrderedDict()
         qs_dict['type'] = _search_type_gzh
         qs_dict['page'] = page
