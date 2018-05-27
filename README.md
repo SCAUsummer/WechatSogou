@@ -1,4 +1,4 @@
-基于搜狗微信搜索的微信公众号爬虫接口
+基于搜狗微信搜索的微信公众号爬虫接口，自己注释读代码学习学习
 ===
 
 [![Build Status](https://travis-ci.org/Chyroc/WechatSogou.svg?branch=master)](https://github.com/Chyroc/WechatSogou)
