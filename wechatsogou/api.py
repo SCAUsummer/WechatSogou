@@ -59,6 +59,7 @@ class WechatSogouAPI(object):
         return resp
 
     def __unlock_sogou(self, url, resp, session, unlock_callback=None, identify_image_callback=None):
+        # 如果没有自己提供验证码处理函数的话，就手动输入
         if unlock_callback is None:
             unlock_callback = unlock_sogou_callback_example
         millis = int(round(time.time() * 1000))
@@ -92,7 +93,8 @@ class WechatSogouAPI(object):
 
     def __get_by_unlock(self, url, referer=None, unlock_platform=None, unlock_callback=None,
                         identify_image_callback=None):
-        assert unlock_platform is None or callable(unlock_platform)
+        # 要么
+        assert unlock_platform is None or callable(unlock_platform)=
 
         if identify_image_callback is None:
             identify_image_callback = identify_image_callback_by_hand
@@ -181,9 +183,11 @@ class WechatSogouAPI(object):
                 'authentication': ''  # 认证
             }
         """
+        # search_gzh(self, keyword, page=1, unlock_callback=None, identify_image_callback=None):
+        # 这里的Keyword就是微信id或者名字
         info = self.search_gzh(wecgat_id_or_name, 1, unlock_callback, identify_image_callback)
         return info[0] if info else None
-
+    # 类方法需要添加self
     def search_gzh(self, keyword, page=1, unlock_callback=None, identify_image_callback=None):
         """搜索 公众号
 
@@ -225,6 +229,7 @@ class WechatSogouAPI(object):
             requests error
         """
         url = WechatSogouRequest.gen_search_gzh_url(keyword, page)
+        
         # 返回公众号的连接
         resp = self.__get_by_unlock(url,
                                     unlock_platform=self.__unlock_sogou,

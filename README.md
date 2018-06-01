@@ -88,8 +88,8 @@ ws_api = wechatsogou.WechatSogouAPI(timeout=0.1)
 ```
 
 
-### 获取特定公众号信息 - get_gzh_info
 
+### 获取特定公众号信息 - get_gzh_info
 ![ws_api.get_gzh_info('南航青年志愿者')](https://raw.githubusercontent.com/chyroc/wechatsogou/master/screenshot/get_gzh_info.png)
 
 - 使用

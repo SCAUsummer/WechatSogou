@@ -88,6 +88,7 @@ class WechatSogouRequest(object):
     @staticmethod
     def gen_search_gzh_url(keyword, page=1):
         """拼接搜索 公众号 URL
+        生成URL，根据微信ID
 
         Parameters
         ----------
@@ -104,13 +105,16 @@ class WechatSogouRequest(object):
         assert isinstance(page, int) and page > 0
         # 断言page是整数，而且怕个应该是大于0
         # 那为什么呢？
-        # 要保证下面的format格式正确
+        # 要保证下面的format格式正确·
         qs_dict = OrderedDict()
+        # 公众号文章，保持输入时候的顺序
         qs_dict['type'] = _search_type_gzh
         qs_dict['page'] = page
         qs_dict['ie'] = 'utf8'
         qs_dict['query'] = keyword
-
+        
+        # 替换{}里面的元素，urlencode是一个函数，可将字符串以URL编码，用于编码处理。
+        # 返回一个URL
         return 'http://weixin.sogou.com/weixin?{}'.format(urlencode(qs_dict))
 
     @staticmethod
